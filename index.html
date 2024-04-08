@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Video and Canvas Side by Side</title>
+<style>
+  .container {
+    display: flex;
+  }
+  #myCanvas {
+    border: 4px solid black;
+  }
+  video, canvas:{
+      margin: 16px;
+  }
+</style>
+</head>
+<body>
+<div class="container">
+  <video id="myVideo" width="320" height="240" controls>
+    <source src="example.mp4" type="video/mp4">
+  </video>
+  <canvas id="myCanvas" width="320" height="240"></canvas>
+</div>
+
+<script>
+  // JavaScript to interact with the video and canvas
+  const canvas = document.getElementById('myCanvas');
+  const ctx = canvas.getContext('2d');
+  // Draw something on the canvas
+  ctx.fillStyle = 'green';
+  ctx.fillRect(10, 10, 300, 100);
+  
+   video.addEventListener('play', function() {
+    drawFrame();
+  });
+
+  video.addEventListener('timeupdate', function() {
+    drawFrame();
+  });
+
+  function drawFrame() {
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+    ctx.strokeStyle = 'red';
+    ctx.lineWidth = 5;
+    ctx.strokeRect(0, 0, canvas.width, canvas.height); // Draw frame edge
+    // You can add more canvas drawing code here if needed
+  }
+</script>
+</body>
+</html>
